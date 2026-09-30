@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Reminders</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5eee6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 700px;
+            margin: 50px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #5a3825;
+        }
+
+        .add-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 12px;
+            background-color: #7b4f35;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .add-button:hover {
+            background-color: #5f3926;
+        }
+
+        .reminder {
+            background-color: #fffaf5;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(91, 58, 32, 0.15);
+        }
+
+        .reminder h2 {
+            margin-top: 0;
+            color: #7b4f35;
+        }
+
+        .reminder p {
+            margin: 8px 0;
+            color: #65432d;
+        }
+
+        .empty {
+            text-align: center;
+            background-color: #fffaf5;
+            padding: 30px;
+            border-radius: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📋 My Reminders</h1>
+
+    <a href="{% url 'add_reminder' %}" class="add-button">
+        ➕ Add New Reminder
+    </a>
+
+    {% if reminders %}
+
+        {% for reminder in reminders %}
+
+        <div class="reminder">
+
+            <h2>🔔 {{ reminder.item_name }}</h2>
+
+            <p>
+                <strong>Category:</strong>
+                {{ reminder.category }}
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                {{ reminder.date }}
+            </p>
+
+            <p>
+                <strong>Time:</strong>
+                {{ reminder.time }}
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                {{ reminder.status }}
+            </p>
+
+            <p>
+                <strong>Notes:</strong>
+                {{ reminder.notes }}
+            </p>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="empty">
+            <h2>No reminders yet 📭</h2>
+            <p>Click "Add New Reminder" to create your first reminder.</p>
+        </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

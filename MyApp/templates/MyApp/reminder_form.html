@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Personal Reminder System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5eee6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 450px;
+            margin: 50px auto;
+            background-color: #fffaf5;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(91, 58, 32, 0.15);
+        }
+
+        h1 {
+            text-align: center;
+            color: #5a3825;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+            color: #65432d;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border: 1px solid #d8bfa8;
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 14px;
+            background-color: #fffdfb;
+            color: #4b3621;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #9a6b48;
+            outline: none;
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #7b4f35;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5f3926;
+        }
+
+        .view-button {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #7b4f35;
+            text-decoration: none;
+        }
+
+        .view-button:hover {
+            color: #5f3926;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🔔 Personal Reminder</h1>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Save Reminder
+        </button>
+
+    </form>
+
+    <a href="{% url 'reminder_list' %}" class="view-button">
+        View My Reminders
+    </a>
+
+</div>
+
+</body>
+</html>
